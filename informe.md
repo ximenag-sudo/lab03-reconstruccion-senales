@@ -89,4 +89,8 @@ Resultados:
 
 ## 6. Nota individual
 
-(Predicción, una prueba explicada y una decisión de implementación, con tus palabras.)
+**Predicción.** Antes de ejecutar el experimento predije que c = 0.99 sería más sensible al ruido que c = 0.2, porque con c cercano a 1 los dos sensores miden casi lo mismo y el ruido se confunde con la pequeña diferencia entre las dos lecturas. También predije que el residuo seguiría siendo pequeño en ambos casos. Los resultados coincidieron: la desviación estándar del error fue ≈ 0.01 con c = 0.2 y ≈ 0.67 con c = 0.99 (κ₂ = 1.50 frente a 199), y el residuo máximo fue del orden de 1e-16 en los dos. Lo que más me sorprendió fue ver un residuo casi cero junto a un error de reconstrucción de hasta 2.79: confirma que un residuo pequeño no garantiza haber recuperado la señal real.
+
+**Prueba.** Expliqué `test_producto_matricial_contra_calculo_manual`. Comprueba que `A @ X` da [1.4, 2.2] para c = 0.2 y x = [1, 2], y [2.98, 2.99] para c = 0.99. Esos valores los calculé a mano (por ejemplo, 1·1 + 0.2·2 = 1.4) y los escribí directamente en la prueba. Si el valor esperado se calculara con la misma función que se está probando, la prueba pasaría siempre, aunque la función estuviera mal. Por eso el cálculo manual es una referencia independiente.
+
+**Decisión de implementación.** Organicé las señales como columnas: `X` tiene forma (2, 441), igual que las lecturas `B`. Así `A @ X` calcula todas las lecturas sin ciclos y `np.linalg.solve(A, B)` resuelve las 441 señales en una sola llamada. Elegí `solve` y no la inversa porque es más estable numéricamente y porque el enunciado lo pedía. Además, las funciones validan las formas de entrada para que un error de orientación (filas contra columnas) no pase inadvertido.
