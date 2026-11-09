@@ -18,9 +18,9 @@ Python 3.13.17, NumPy 2.5.4, Matplotlib 3.11.2, pytest 9.2.0 (Windows 11).
 ## Cómo reproducirlo desde cero (PowerShell)
 
 ```
-git clone <URL_DEL_REPOSITORIO> lab03
+git clone https://github.com/ximenag-sudo/lab03-reconstruccion-senales.git lab03
 cd lab03
-python -m venv .venv
+py -3.13 -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 pytest
@@ -28,6 +28,8 @@ cd src
 python experimento.py
 cd ..
 ```
+
+Si PowerShell bloquea la activación del entorno, ejecutar una vez `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`. En Linux o macOS: `python3 -m venv .venv` y `source .venv/bin/activate`.
 
 ## Dónde quedan los resultados
 

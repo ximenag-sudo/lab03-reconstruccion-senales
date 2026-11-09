@@ -64,7 +64,28 @@ Como cada señal es una columna, la media y la desviación por componente reduce
 
 ## 5. Ejecución limpia
 
-(Completar tras probar el README desde una copia nueva: comandos usados, versiones y resultado de `pytest`.)
+Se clonó el repositorio en una carpeta nueva (`lab03_limpio`) y se siguió únicamente el README en PowerShell (Windows 11).
+
+Comandos:
+
+```
+git clone https://github.com/ximenag-sudo/lab03-reconstruccion-senales.git lab03_limpio
+cd lab03_limpio
+py -3.13 -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pytest
+cd src
+python experimento.py
+cd ..
+```
+
+Versiones: Python 3.13.17, NumPy 2.5.4, Matplotlib 3.11.2, pytest 9.2.0.
+
+Resultados:
+
+- `pytest`: 27 passed en 2.15 s.
+- `experimento.py`: se obtuvieron las mismas dos tablas de la sección 2 (κ₂ = 1.50 y 199.00; error euclidiano máximo 0.0380 y 2.7945; proporción sobre el umbral 0.000 y 0.902; residuo máximo 2.5e-16 y 5.0e-16). La ejecución es reproducible con la semilla 7.
 
 ## 6. Nota individual
 
